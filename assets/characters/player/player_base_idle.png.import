@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dewseldeo3l7x"
-path="res://.godot/imported/chest.png-cf674f61dc1fb2393043c43005f240e2.ctex"
+uid="uid://by4n18pvwcnt3"
+path="res://.godot/imported/player_base_idle.png-a9528f9ab492bede5138e6193502aecb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/chest/chest.png"
-dest_files=["res://.godot/imported/chest.png-cf674f61dc1fb2393043c43005f240e2.ctex"]
+source_file="res://assets/characters/player/player_base_idle.png"
+dest_files=["res://.godot/imported/player_base_idle.png-a9528f9ab492bede5138e6193502aecb.ctex"]
 
 [params]
 

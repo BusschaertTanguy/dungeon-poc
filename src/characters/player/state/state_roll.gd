@@ -1,16 +1,16 @@
-class_name PlayerStateRolling
 extends PlayerState
+class_name PlayerRollState
 
-var roll_speed = 0.0
-var roll_direction = Vector2.ZERO
-var roll_timer = 0.0
-	
-func enter(args := {}) -> void:
-	roll_direction = args.get("direction", Vector2.ZERO)
-	assert(roll_direction != Vector2.ZERO)
+var roll_speed := 0.0
+var roll_direction := Vector2.ZERO
+var roll_timer := 0.0
+
+func enter() -> void:
+	var direction := Input.get_vector("left", "right", "up", "down")
 	
 	roll_speed = player.speed * 1.5
-	
+	roll_direction = direction
+
 	# Animation
 	if roll_direction.x != 0:
 		player.sprite_base.animation = "roll"
@@ -20,25 +20,27 @@ func enter(args := {}) -> void:
 		player.sprite_base.animation = "roll_down" if roll_direction.y > 0 else "roll_up"
 		roll_timer = player.sprite_base.sprite_frames.get_frame_count(player.sprite_base.animation) / player.sprite_base.sprite_frames.get_animation_speed(player.sprite_base.animation)
 
-
-func handle(direction: Vector2, delta: float) -> PlayerState.Type:
-	# Roll lock
-	roll_timer -= delta
-	
-	# Movement
-	player.velocity = roll_direction * roll_speed
-	
-	# Transition
-	if roll_timer > 0:
-		return PlayerState.Type.ROLLING
-	
+func exit() -> void:
 	roll_direction = Vector2.ZERO
 	roll_timer = 0
+
+func execute(delta: float) -> void:
+	# Decrease roll timer
+	roll_timer -= delta
 	
+	# Logic
+	player.velocity = roll_direction * roll_speed
+	player.move_and_slide()
+	
+	if roll_timer > 0:
+		return
+	
+	# Transition
+	var direction := Input.get_vector("left", "right", "up", "down")
 	if direction == Vector2.ZERO:
-		return PlayerState.Type.IDLE
+		state_machine.transition_to(PlayerStateMachine.State.RUN)
+		return
 	
 	if(direction != Vector2.ZERO):
-		return PlayerState.Type.RUNNING
-	
-	return PlayerState.Type.ROLLING
+		state_machine.transition_to(PlayerStateMachine.State.RUN)
+		return
