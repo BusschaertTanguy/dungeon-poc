@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://caa7qjyt25ka8"]
+
+[ext_resource type="Texture2D" uid="uid://dewseldeo3l7x" path="res://items/chest/chest.png" id="1_6h5e6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51krv"]
+size = Vector2(16, 7)
+
+[node name="Chest" type="StaticBody2D"]
+y_sort_enabled = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6h5e6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_51krv")
