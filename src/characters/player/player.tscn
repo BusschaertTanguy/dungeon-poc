@@ -384,6 +384,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+motion_mode = 1
 script = ExtResource("1_xxgcw")
 metadata/_edit_group_ = true
 
