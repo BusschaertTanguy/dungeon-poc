@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwtkutocyf60r"
-path="res://.godot/imported/player_base_roll.png-743cf8e2c19775a2d2d00ee73adce70e.ctex"
+uid="uid://bj7qqimj2jmvk"
+path="res://.godot/imported/player_hands_jump.png-065aef07c24210a72fa01627f7f2ca82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/player/player_base_roll.png"
-dest_files=["res://.godot/imported/player_base_roll.png-743cf8e2c19775a2d2d00ee73adce70e.ctex"]
+source_file="res://assets/characters/player/player_hands_jump.png"
+dest_files=["res://.godot/imported/player_hands_jump.png-065aef07c24210a72fa01627f7f2ca82.ctex"]
 
 [params]
 

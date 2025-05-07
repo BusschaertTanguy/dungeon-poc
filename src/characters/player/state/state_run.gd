@@ -18,16 +18,19 @@ func execute(_delta: float) -> void:
 		state_machine.transition_to(PlayerStateMachine.State.ROLL)
 		return
 	
+	if(Input.is_action_just_pressed("jump")):
+		state_machine.transition_to(PlayerStateMachine.State.JUMP)
+		return
+	
 	# Animation
 	apply_animation(direction)
 
-	# Logic
+	# Physics
 	player.velocity = direction * player.speed
 	player.move_and_slide()
 
 func apply_animation(direction: Vector2) -> void:
 	if direction.x != 0:
-		player.sprite_base.play("run")
-		player.sprite_base.flip_h = direction.x < 0
+		player.sprite_controller.apply_animation("run", direction.x < 0)
 	elif direction.y != 0:
-		player.sprite_base.play("run_down" if player.velocity.y > 0 else "run_up")
+		player.sprite_controller.apply_animation("run_down" if player.velocity.y > 0 else "run_up")
