@@ -2,7 +2,9 @@ extends PlayerState
 class_name PlayerIdleState
 
 func enter() -> void:
-	player.sprite_controller.play("idle")
+	var sprite = player.sprite_controller
+	sprite.animation = "idle"
+	sprite.play()
 
 func execute(_delta: float) -> void:
 	# Input

@@ -34,7 +34,12 @@ func execute(_delta: float) -> void:
 	player.move_and_slide()
 
 func apply_animation(direction: Vector2) -> void:
+	var sprite = player.sprite_controller
+	
 	if direction.x != 0:
-		player.sprite_controller.play("run", direction.x < 0)
+		sprite.animation = "run"
+		sprite.flip_h = direction.x < 0
 	elif direction.y != 0:
-		player.sprite_controller.play("run_down" if player.velocity.y > 0 else "run_up")
+		sprite.animation = "run_down" if player.velocity.y > 0 else "run_up"
+	
+	sprite.play()

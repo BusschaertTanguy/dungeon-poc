@@ -10,13 +10,19 @@ func enter() -> void:
 	jump_timer = jump_cooldown
 	
 	# Animation
-	if direction == Vector2.ZERO:
-		player.sprite_controller.play("jump_down", false, jump_cooldown, false)
-	elif direction.x != 0:
-		player.sprite_controller.play("jump", direction.x < 0, jump_cooldown, false)
-	elif direction.y != 0:
-		player.sprite_controller.play("jump_down" if direction.y > 0 else "jump_up", jump_cooldown, false)
+	var sprite = player.sprite_controller
+	sprite.loop = false
+	sprite.time = jump_cooldown
 	
+	if direction == Vector2.ZERO:
+		sprite.animation = "jump_down"
+	elif direction.x != 0:
+		sprite.animation = "jump"
+		sprite.flip_h = direction.x < 0
+	elif direction.y != 0:
+		sprite.animation = "jump_down" if direction.y > 0 else "jump_up"
+	
+	sprite.play()
 	jump_direction = direction
 
 func exit() -> void:

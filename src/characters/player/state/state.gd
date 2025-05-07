@@ -8,7 +8,7 @@ func _init(player_: Player, state_machine_: PlayerStateMachine) -> void:
 	state_machine = state_machine_
 
 func enter() -> void:
-	pass
+	player.sprite_controller.reset()
 
 func exit() -> void:
 	pass

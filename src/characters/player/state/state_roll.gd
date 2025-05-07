@@ -13,10 +13,17 @@ func enter() -> void:
 	roll_timer = roll_cooldown
 	
 	# Animation
+	var sprite = player.sprite_controller
+	sprite.loop = false
+	sprite.time = roll_cooldown
+	
 	if direction.x != 0:
-		player.sprite_controller.play("roll", direction.x < 0, roll_cooldown, false)
+		sprite.animation = "roll"
+		sprite.flip_h = direction.x < 0
 	elif direction.y != 0:
-		player.sprite_controller.play("roll_down" if direction.y > 0 else "roll_up", false, roll_cooldown, false)
+		sprite.animation = "roll_down" if direction.y > 0 else "roll_up"
+	
+	sprite.play()
 
 func exit() -> void:
 	roll_direction = Vector2.ZERO

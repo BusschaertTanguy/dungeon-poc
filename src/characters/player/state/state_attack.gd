@@ -14,12 +14,19 @@ func enter() -> void:
 	attack_timer = attack_cooldown
 	
 	# Animation
+	var sprite = player.sprite_controller
+	sprite.loop = false;
+	sprite.time = attack_cooldown
+	
 	if attack_direction == Vector2.ZERO:
-		player.sprite_controller.play("attack_down", false, attack_cooldown, false)
+		sprite.animation = "attack_down"
 	elif attack_direction.x != 0:
-		player.sprite_controller.play("attack", attack_direction.x < 0, attack_cooldown, false)
+		sprite.animation = "attack"
+		sprite.flip_h = attack_direction.x < 0
 	elif attack_direction.y != 0:
-		player.sprite_controller.play("attack_down" if attack_direction.y > 0 else "attack_up", attack_cooldown, false)
+		sprite.animation = "attack_down" if attack_direction.y > 0 else "attack_up"
+	
+	sprite.play()
 	
 	var index := player.sprite_controller.sprites.find_custom(filter_attack_sprite)
 	attack_sprite = player.sprite_controller.sprites[index]
