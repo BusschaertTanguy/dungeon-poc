@@ -4,7 +4,8 @@ enum State {
 	IDLE,
 	RUN,
 	ROLL,
-	JUMP
+	JUMP,
+	ATTACK
 }
 
 var states: Dictionary = {}
@@ -15,7 +16,8 @@ func _init(player_: Player) -> void:
 		State.IDLE: PlayerIdleState.new(player_, self),
 		State.RUN: PlayerRunState.new(player_, self),
 		State.ROLL: PlayerRollState.new(player_, self),
-		State.JUMP: PlayerStateJump.new(player_, self)
+		State.JUMP: PlayerStateJump.new(player_, self),
+		State.ATTACK: PlayerStateAttack.new(player_, self)
 	}
 	
 	transition_to(State.IDLE)

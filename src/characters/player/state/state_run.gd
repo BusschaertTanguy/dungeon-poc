@@ -22,6 +22,10 @@ func execute(_delta: float) -> void:
 		state_machine.transition_to(PlayerStateMachine.State.JUMP)
 		return
 	
+	if(Input.is_action_just_pressed("attack")):
+		state_machine.transition_to(PlayerStateMachine.State.ATTACK)
+		return
+	
 	# Animation
 	apply_animation(direction)
 
@@ -31,6 +35,6 @@ func execute(_delta: float) -> void:
 
 func apply_animation(direction: Vector2) -> void:
 	if direction.x != 0:
-		player.sprite_controller.apply_animation("run", direction.x < 0)
+		player.sprite_controller.play("run", direction.x < 0)
 	elif direction.y != 0:
-		player.sprite_controller.apply_animation("run_down" if player.velocity.y > 0 else "run_up")
+		player.sprite_controller.play("run_down" if player.velocity.y > 0 else "run_up")

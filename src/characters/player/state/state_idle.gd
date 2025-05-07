@@ -2,7 +2,7 @@ extends PlayerState
 class_name PlayerIdleState
 
 func enter() -> void:
-	player.sprite_controller.apply_animation("idle")
+	player.sprite_controller.play("idle")
 
 func execute(_delta: float) -> void:
 	# Input
@@ -11,6 +11,10 @@ func execute(_delta: float) -> void:
 	# Transition
 	if(Input.is_action_just_pressed("jump")):
 		state_machine.transition_to(PlayerStateMachine.State.JUMP)
+		return
+	
+	if(Input.is_action_just_pressed("attack")):
+		state_machine.transition_to(PlayerStateMachine.State.ATTACK)
 		return
 	
 	if(direction != Vector2.ZERO):
