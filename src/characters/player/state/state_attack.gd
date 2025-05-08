@@ -22,17 +22,18 @@ func enter() -> void:
 
 	# Hurtbox
 	attack_hurtbox = Area2D.new()
+	attack_hurtbox.position = player.collision_shape.position
 	attack_hurtbox.body_entered.connect(on_hurtbox_collision)
 	
 	var attack_hurtbox_rectangle = RectangleShape2D.new()
 	var attack_hurtbox_collision := CollisionShape2D.new()
 	
 	if attack_direction.x != 0:
-		attack_hurtbox_rectangle.size = Vector2(10, 20)
+		attack_hurtbox_rectangle.size = Vector2(10, 15)
 		attack_hurtbox_collision.position.y = -attack_hurtbox_rectangle.size.y / 2
 		attack_hurtbox_collision.position.x = attack_range if attack_direction.sign().x > 0 else -attack_range - attack_hurtbox_rectangle.size.x
 	elif attack_direction.y != 0:
-		attack_hurtbox_rectangle.size = Vector2(20, 10)
+		attack_hurtbox_rectangle.size = Vector2(15, 10)
 		attack_hurtbox_collision.position.y = attack_range if attack_direction.sign().y > 0 else -attack_range - attack_hurtbox_rectangle.size.y
 		attack_hurtbox_collision.position.x = -attack_hurtbox_rectangle.size.x / 2
 	

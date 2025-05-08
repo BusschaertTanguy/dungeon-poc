@@ -1973,7 +1973,7 @@ script = ExtResource("1_xxgcw")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 4.5)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_508ok")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1983,15 +1983,15 @@ script = ExtResource("2_hhnms")
 
 [node name="Base" type="AnimatedSprite2D" parent="SpriteController"]
 sprite_frames = SubResource("SpriteFrames_idpv6")
-animation = &"roll"
+animation = &"run"
 
 [node name="Hands" type="AnimatedSprite2D" parent="SpriteController"]
 sprite_frames = SubResource("SpriteFrames_7swvd")
-animation = &"jump"
+animation = &"run"
 
 [node name="Hair" type="AnimatedSprite2D" parent="SpriteController"]
 sprite_frames = SubResource("SpriteFrames_020ow")
-animation = &"roll_up"
+animation = &"run"
 
 [node name="Attack" type="AnimatedSprite2D" parent="SpriteController"]
 visible = false
