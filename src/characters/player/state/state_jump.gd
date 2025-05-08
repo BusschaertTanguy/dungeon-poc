@@ -7,10 +7,12 @@ var jump_timer := 0.0
 
 func enter() -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
+	jump_direction = direction
 	jump_timer = jump_cooldown
 	
 	# Animation
 	var sprite = player.sprite_controller
+	sprite.reset()
 	sprite.loop = false
 	sprite.time = jump_cooldown
 	
@@ -23,11 +25,6 @@ func enter() -> void:
 		sprite.animation = "jump_down" if direction.y > 0 else "jump_up"
 	
 	sprite.play()
-	jump_direction = direction
-
-func exit() -> void:
-	jump_direction = Vector2.ZERO
-	jump_timer = 0.0
 
 func execute(delta: float) -> void:
 	# Decrease roll timer

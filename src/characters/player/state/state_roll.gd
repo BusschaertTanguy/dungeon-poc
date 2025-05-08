@@ -2,7 +2,7 @@ extends PlayerState
 class_name PlayerRollState
 
 var roll_direction := Vector2.ZERO
-var roll_cooldown := 0.55
+var roll_cooldown := 0.5
 var roll_timer := 0.0
 
 var player_speed_multiplier := 1.5
@@ -14,6 +14,7 @@ func enter() -> void:
 	
 	# Animation
 	var sprite = player.sprite_controller
+	sprite.reset()
 	sprite.loop = false
 	sprite.time = roll_cooldown
 	
@@ -24,10 +25,6 @@ func enter() -> void:
 		sprite.animation = "roll_down" if direction.y > 0 else "roll_up"
 	
 	sprite.play()
-
-func exit() -> void:
-	roll_direction = Vector2.ZERO
-	roll_timer = 0.0
 
 func execute(delta: float) -> void:
 	# Decrease roll timer

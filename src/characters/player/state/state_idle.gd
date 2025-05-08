@@ -3,6 +3,7 @@ class_name PlayerIdleState
 
 func enter() -> void:
 	var sprite = player.sprite_controller
+	sprite.reset()
 	sprite.animation = "idle"
 	sprite.play()
 

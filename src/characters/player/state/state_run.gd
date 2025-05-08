@@ -3,6 +3,7 @@ class_name PlayerRunState
 
 func enter() -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
+	player.sprite_controller.reset()
 	apply_animation(direction)
 
 func execute(_delta: float) -> void:
